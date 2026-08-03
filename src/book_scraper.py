@@ -4,6 +4,7 @@ import time
 import requests
 from bs4 import BeautifulSoup
 
+# Define the target website and headers to simulate a real browser request
 BASE_URL = "https://books.toscrape.com/"
 current_url = BASE_URL
 
@@ -13,16 +14,18 @@ headers = {
 
 extracted_data = []
 
-
+# Set up the file path to save data in the 'data' folder as books.json
 script_dir = os.path.dirname(os.path.abspath(__file__))
-file_path = os.path.join(script_dir, "products.json")
+project_dir = os.path.dirname(script_dir)
+file_path = os.path.join(project_dir, "data", "books.json")
 
 page_counter = 1
 
+# Loop through all available pages
 while current_url:
     print(f"Scraping page {page_counter}: {current_url}")
-
     
+    # Fetch page content and handle potential connection errors
     try:
         response = requests.get(current_url, headers=headers, timeout=10)
         if response.status_code != 200:
@@ -36,12 +39,15 @@ while current_url:
     soup = BeautifulSoup(response.text, "html.parser")
     products = soup.find_all("article", class_="product_pod")
 
+    # Extract details for each book on the current page
     for product in products:
         title = product.h3.a["title"]
 
+        # Clean up the price text to convert it into a float
         price_text = product.find("p", class_="price_color").text
         price = float(price_text.replace("£", "").replace("Â", ""))
 
+        # Build absolute URLs for book links and images
         relative_link = product.h3.a["href"]
         full_link = (
             BASE_URL + relative_link
@@ -66,6 +72,7 @@ while current_url:
         }
         extracted_data.append(item)
 
+    # Check for pagination and construct the URL for the next page
     next_btn = soup.find("li", class_="next")
 
     if next_btn:
@@ -76,11 +83,11 @@ while current_url:
             current_url = BASE_URL + "catalogue/" + next_page_rel
 
         page_counter += 1
-        time.sleep(1)
+        time.sleep(1) # Be polite to the server
     else:
         current_url = None
 
-
+# Save the extracted data to a JSON file
 with open(file_path, "w", encoding="utf-8") as f:
     json.dump(extracted_data, f, ensure_ascii=False, indent=4)
 
