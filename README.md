@@ -37,10 +37,10 @@ books-to-scrape-python/
 
 ## 🚀 Getting Started
 
-(###) Prerequisites
+### Prerequisites
 Make sure you have Python installed on your system.
 
-(###) Installation
+### Installation
 
 1. **Clone the repository:**
    git clone [https://github.com/YOUR_USERNAME/books-to-scrape-python.git](https://github.com/YOUR_USERNAME/books-to-scrape-python.git)
