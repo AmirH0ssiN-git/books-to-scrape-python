@@ -21,11 +21,10 @@ A lightweight, efficient Python web scraper designed to extract book information
 - **[Questionary](https://questionary.readthedocs.io/):** For interactive CLI user prompts.
 
 ---
-
 ## 📂 Project Structure
 
+```text
 books-to-scrape-python/
-│
 ├── data/
 │   ├── books.json          # Scraped output data (JSON format)
 │   └── books.csv           # Scraped output data (CSV format)
@@ -35,7 +34,7 @@ books-to-scrape-python/
 ├── LICENSE                 # MIT License
 ├── README.md               # Project documentation
 └── requirements.txt        # Project dependencies
-
+```
 ---
 
 ## 🚀 Getting Started
