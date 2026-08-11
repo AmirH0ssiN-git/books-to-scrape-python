@@ -1,86 +1,44 @@
-# 📚 Books to Scrape - Python Web Scraper
+# Books to Scrape
 
-A lightweight, efficient Python web scraper designed to extract book information from [books.toscrape.com](http://books.toscrape.com/). It parses the HTML structure and offers an interactive CLI to export data in either `JSON` or `CSV` format.
+A Python web scraper for http://books.toscrape.com/ that exports scraped book data to JSON or CSV.
 
----
+## Features
+* Extracts book titles, prices, ratings, and availability across all pages.
+* Interactive CLI prompt to choose export format (JSON or CSV).
+* 1-second delay between requests to avoid overloading the target server.
 
-## ✨ Features
+## Requirements
+* Python 3.8+
+* `requests`
+* `beautifulsoup4`
+* `questionary`
 
-- **Automated Data Extraction:** Scrapes book titles, prices, availability, and ratings.
-- **Interactive CLI Selection:** Choose between `JSON` and `CSV` export formats dynamically.
-- **Structured Output:** Cleanly exports extracted data into `data/books.json` or `data/books.csv`.
-- **Error Handling & Rate Limiting:** Built-in sleep intervals and resilient session handling.
-
----
-
-## 🛠️ Tech Stack
-
-- **Python 3.x**
-- **[Requests](https://requests.readthedocs.io/):** For making HTTP requests to target pages.
-- **[BeautifulSoup4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/):** For parsing HTML and extracting target element data.
-- **[Questionary](https://questionary.readthedocs.io/):** For interactive CLI user prompts.
-
----
-## 📂 Project Structure
-
+## Project Structure
 ```text
 books-to-scrape-python/
-├── data/
-│   ├── books.json          # Scraped output data (JSON format)
-│   └── books.csv           # Scraped output data (CSV format)
+├── data/               # Output files (books.json, books.csv)
 ├── src/
-│   └── book_scraper.py     # Main web scraping script
-├── .gitignore              # Ignored files (e.g., venv)
-├── LICENSE                 # MIT License
-├── README.md               # Project documentation
-└── requirements.txt        # Project dependencies
+│   └── book_scraper.py # Main scraper script
+├── .gitignore
+├── LICENSE
+├── README.md
+└── requirements.txt
 ```
----
 
-## 🚀 Getting Started
+## Setup & Usage
 
-### Prerequisites
-Make sure you have Python installed on your system.
-
-### Installation
-
-1. **Clone the repository:**
+1. Clone the repository and navigate into it:
    ```bash
-   git clone [https://github.com/YOUR_USERNAME/books-to-scrape-python.git](https://github.com/YOUR_USERNAME/books-to-scrape-python.git)
+   git clone https://github.com/AmirH0ssiN-git/books-to-scrape-python.git
    cd books-to-scrape-python
    ```
 
-2. **Create and activate a virtual environment:**
-   - **Windows:**
-     ```cmd
-     python -m venv venv
-     .\venv\Scripts\activate
-     ```
-   - **Linux/macOS:**
-     ```bash
-     python3 -m venv venv
-     source venv/bin/activate
-     ```
-
-3. **Install dependencies:**
+2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
----
-
-## 🏃 Usage
-
-Run the main scraper script from the root directory:
-
-```bash
-python src/book_scraper.py
-```
-
-Upon execution, an interactive prompt will ask you to select the export format (`JSON` or `CSV`). The output file will be generated inside the `data/` directory.
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+3. Run the scraper:
+   ```bash
+   python src/book_scraper.py
+   ```
